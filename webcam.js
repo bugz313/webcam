@@ -147,8 +147,8 @@ var Webcam = {
 					"video": {
 						mandatory: {
 							sourceId:id,
-							minWidth: this.params.dest_width,
-							minHeight: this.params.dest_height
+							minWidth: self.params.width,
+							minHeight: self.params.dest_height
 						}
 					}
 				})
