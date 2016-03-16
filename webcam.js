@@ -150,22 +150,20 @@ var Webcam = {
 							minWidth: self.params.width,
 							minHeight: self.params.dest_height
 						}
+					},
+					function(stream){
+						video.src = window.URL.createObjectURL( stream ) || stream;
+						self.stream = stream;
+						self.loaded = true;
+						self.live = true;
+						self.dispatch('load');
+						self.dispatch('live');
+						self.flip();
+					}, 
+					function(err){
+						return self.dispatch('error', "Could not access webcam: " + err.name + ": " + err.message, err);
 					}
 				})
-				.then( function(stream) {
-					// got access, attach stream to video
-					video.src = window.URL.createObjectURL( stream ) || stream;
-					self.stream = stream;
-					self.loaded = true;
-					self.live = true;
-					self.dispatch('load');
-					self.dispatch('live');
-					self.flip();
-				})
-				.catch( function(err) {
-					return self.dispatch('error', "Could not access webcam: " + err.name + ": " + err.message, err);
-				});
-				
 			})
 		}
 		else {
