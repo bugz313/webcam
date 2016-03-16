@@ -533,8 +533,8 @@ var Webcam = {
 		
 		// create offscreen canvas element to hold pixels
 		var canvas = document.createElement('canvas');
-		canvas.width = this.params.dest_width;
-		canvas.height = this.params.dest_height;
+		canvas.width = self.params.dest_width;
+		canvas.height = self.params.dest_height;
 		var context = canvas.getContext('2d');
 		
 		// flip canvas horizontally if desired
