@@ -98,10 +98,8 @@ var Webcam = {
 		if (typeof this.params.fps !== "number") this.params.fps = 30;
 
 		// adjust scale if dest_width or dest_height is different
-		//var scaleX = this.params.width / this.params.dest_width;
-		//var scaleY = this.params.height / this.params.dest_height;
-		var scaleX = 1;
-		var scaleY = 1;
+		var scaleX = this.params.width / this.params.dest_width;
+		var scaleY = this.params.height / this.params.dest_height;
 		
 		if (this.userMedia) {
 			// setup webcam video container
