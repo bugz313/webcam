@@ -541,7 +541,7 @@ var Webcam = {
 		
 		// flip canvas horizontally if desired
 		if (this.params.flip_horiz) {
-			context.translate( params.dest_width, 0 );
+			context.translate( $("#my_camera > video")[0].videoWidth, 0 );
 			context.scale( -1, 1 );
 		}
 		
@@ -549,7 +549,7 @@ var Webcam = {
 		var func = function() {
 			// render image if needed (flash)
 			if (this.src && this.width && this.height) {
-				context.drawImage(this, 0, 0, params.dest_width, params.dest_height);
+				context.drawImage(this, 0, 0, $("#my_camera > video")[0].videoWidth, $("#my_camera > video")[0].videoHeight);
 			}
 			
 			// crop if desired
