@@ -560,8 +560,8 @@ var Webcam = {
 				var crop_context = crop_canvas.getContext('2d');
 				
 				crop_context.drawImage( canvas, 
-					Math.floor( (params.dest_width / 2) - (params.crop_width / 2) ),
-					Math.floor( (params.dest_height / 2) - (params.crop_height / 2) ),
+					Math.floor( ($("#my_camera > video")[0].videoWidth / 2) - (params.crop_width / 2) ),
+					Math.floor( ($("#my_camera > video")[0].videoHeight / 2) - (params.crop_height / 2) ),
 					params.crop_width,
 					params.crop_height,
 					0,
