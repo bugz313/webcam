@@ -72,7 +72,6 @@ var Webcam = {
 		if (typeof(elem) == 'string') {
 			elem = document.getElementById(elem) || document.querySelector(elem);
 		}
-		$("#mediaSources").append("<br> check user med"+elem);
 		if (!elem) {
 			return this.dispatch('error', "Could not locate DOM element to attach to.");
 		}
@@ -129,7 +128,6 @@ var Webcam = {
 			
 			// ask user for access to their camera
 			var self = this;
-			$("#mediaSources").append("<br> HEREE");
 			MediaStreamTrack.getSources(function(data){
 				var id = "";
 				
@@ -140,7 +138,12 @@ var Webcam = {
 					}
 				}
 				
-				this.mediaDevices.getUserMedia({
+				navigator.getMedia = ( navigator.getUserMedia ||
+                           navigator.webkitGetUserMedia ||
+                           navigator.mozGetUserMedia ||
+                           navigator.msGetUserMedia);
+				
+				navigator.getMedia({
 					"video": {
 						mandatory: {
 							sourceId:id,
