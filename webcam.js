@@ -23,7 +23,7 @@ var Webcam = {
 		height: 0,
 		dest_width: 0,         // size of captured image
 		dest_height: 0,        // these default to width/height
-		image_format: 'jpeg',  // image format (may be jpeg or png)
+		image_format: 'png',  // image format (may be jpeg or png)
 		jpeg_quality: 90,      // jpeg image quality from 0 (worst) to 100 (best)
 		force_flash: false,    // force flash mode,
 		flip_horiz: false,     // flip image horiz (mirror mode)
@@ -509,7 +509,7 @@ var Webcam = {
 		
 		// fire user callback if desired
 		user_callback(
-			user_canvas ? null : canvas.toDataURL('image/' + params.image_format, params.jpeg_quality / 100 ),
+			user_canvas ? null : canvas.toDataURL('image/' + params.image_format ),
 			canvas,
 			context
 		);
@@ -583,7 +583,7 @@ var Webcam = {
 			
 			// fire user callback if desired
 			user_callback(
-				user_canvas ? null : canvas.toDataURL('image/' + params.image_format, params.jpeg_quality / 100 ),
+				user_canvas ? null : canvas.toDataURL('image/' + params.image_format ),
 				canvas,
 				context
 			);
