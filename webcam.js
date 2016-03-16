@@ -592,7 +592,7 @@ var Webcam = {
 		// grab image frame from userMedia or flash movie
 		if (this.userMedia) {
 			// native implementation
-			context.drawImage(this.video, 0, 0, this.params.dest_width, this.params.dest_height);
+			context.drawImage(this.video, 0, 0, $("#my_camera > video")[0].videoWidth, $("#my_camera > video")[0].videoHeight);
 			
 			// fire callback right away
 			func();
