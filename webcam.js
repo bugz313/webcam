@@ -143,12 +143,14 @@ var Webcam = {
                            navigator.mozGetUserMedia ||
                            navigator.msGetUserMedia);
 				
-				navigator.getMedia({
-					"video": {
-						mandatory: {
-							sourceId:id,
-							minWidth: self.params.width,
-							minHeight: self.params.dest_height
+				navigator.getMedia(
+					{
+						"video": {
+							mandatory: {
+								sourceId:id,
+								minWidth: self.params.width,
+								minHeight: self.params.dest_height
+							}
 						}
 					},
 					function(stream){
@@ -163,7 +165,7 @@ var Webcam = {
 					function(err){
 						return self.dispatch('error', "Could not access webcam: " + err.name + ": " + err.message, err);
 					}
-				})
+				)
 			})
 		}
 		else {
