@@ -98,8 +98,8 @@ var Webcam = {
 		if (typeof this.params.fps !== "number") this.params.fps = 30;
 
 		// adjust scale if dest_width or dest_height is different
-		var scaleX = this.params.width / this.params.dest_width;
-		var scaleY = this.params.height / this.params.dest_height;
+		//var scaleX = this.params.width / this.params.dest_width;
+		//var scaleY = this.params.height / this.params.dest_height;
 		
 		if (this.userMedia) {
 			// setup webcam video container
@@ -533,8 +533,8 @@ var Webcam = {
 		
 		// create offscreen canvas element to hold pixels
 		var canvas = document.createElement('canvas');
-		canvas.width = $("#my_camera").width();
-		canvas.height = $("#my_camera").height();
+		canvas.width = self.params.dest_width;
+		canvas.height = self.params.dest_height;
 		var context = canvas.getContext('2d');
 		
 		// flip canvas horizontally if desired
@@ -547,7 +547,7 @@ var Webcam = {
 		var func = function() {
 			// render image if needed (flash)
 			if (this.src && this.width && this.height) {
-				context.drawImage(this, 0, 0, $("#my_camera").width(), $("#my_camera").height());
+				context.drawImage(this, 0, 0, params.dest_width, params.dest_height);
 			}
 			
 			// crop if desired
@@ -558,8 +558,8 @@ var Webcam = {
 				var crop_context = crop_canvas.getContext('2d');
 				
 				crop_context.drawImage( canvas, 
-					Math.floor( ($("#my_camera").width() / 2) - (params.crop_width / 2) ),
-					Math.floor( ($("#my_camera").height() / 2) - (params.crop_height / 2) ),
+					Math.floor( (params.dest_width / 2) - (params.crop_width / 2) ),
+					Math.floor( (params.dest_height / 2) - (params.crop_height / 2) ),
 					params.crop_width,
 					params.crop_height,
 					0,
