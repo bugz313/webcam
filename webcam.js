@@ -100,8 +100,8 @@ var Webcam = {
 		// adjust scale if dest_width or dest_height is different
 		//var scaleX = this.params.width / this.params.dest_width;
 		//var scaleY = this.params.height / this.params.dest_height;
-		var scaleX = 0.5;
-		var scaleY = 0.5;
+		var scaleX = 1;
+		var scaleY = 1;
 		
 		if (this.userMedia) {
 			// setup webcam video container
@@ -592,7 +592,7 @@ var Webcam = {
 		// grab image frame from userMedia or flash movie
 		if (this.userMedia) {
 			// native implementation
-			context.drawImage(this.video, 0, 0, $("#my_camera > video")[0].videoWidth/2, $("#my_camera > video")[0].videoHeight/2);
+			context.drawImage(this.video, 0, 0, $("#my_camera > video")[0].videoWidth/4, $("#my_camera > video")[0].videoHeight/4);
 			
 			// fire callback right away
 			func();
