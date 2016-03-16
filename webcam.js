@@ -535,8 +535,8 @@ var Webcam = {
 		
 		// create offscreen canvas element to hold pixels
 		var canvas = document.createElement('canvas');
-		canvas.width = $("#my_camera > video")[0].videoWidth;
-		canvas.height = $("#my_camera > video")[0].videoHeight;
+		canvas.width = $("#my_camera > video")[0].videoWidth/2;
+		canvas.height = $("#my_camera > video")[0].videoHeight/2;
 		var context = canvas.getContext('2d');
 		
 		// flip canvas horizontally if desired
@@ -549,7 +549,7 @@ var Webcam = {
 		var func = function() {
 			// render image if needed (flash)
 			if (this.src && this.width && this.height) {
-				context.drawImage(this, 0, 0, $("#my_camera > video")[0].videoWidth, $("#my_camera > video")[0].videoHeight);
+				context.drawImage(this, 0, 0, $("#my_camera > video")[0].videoWidth/2, $("#my_camera > video")[0].videoHeight/2);
 			}
 			
 			// crop if desired
