@@ -535,8 +535,8 @@ var Webcam = {
 		
 		// create offscreen canvas element to hold pixels
 		var canvas = document.createElement('canvas');
-		canvas.width = $("#my_camera > video")[0].videoWidth/4;
-		canvas.height = $("#my_camera > video")[0].videoHeight/4;
+		canvas.width = $("#my_camera > video")[0].videoWidth;
+		canvas.height = $("#my_camera > video")[0].videoHeight;
 		var context = canvas.getContext('2d');
 		
 		// flip canvas horizontally if desired
@@ -549,7 +549,7 @@ var Webcam = {
 		var func = function() {
 			// render image if needed (flash)
 			if (this.src && this.width && this.height) {
-				context.drawImage(this, 0, 0, $("#my_camera > video")[0].videoWidth/4, $("#my_camera > video")[0].videoHeight/4);
+				context.drawImage(this, 0, 0, $("#my_camera > video")[0].videoWidth, $("#my_camera > video")[0].videoHeight);
 			}
 			
 			// crop if desired
@@ -560,8 +560,8 @@ var Webcam = {
 				var crop_context = crop_canvas.getContext('2d');
 				
 				crop_context.drawImage( canvas, 
-					Math.floor( ($("#my_camera > video")[0].videoWidth / 4) - (params.crop_width / 2) ),
-					Math.floor( ($("#my_camera > video")[0].videoHeight / 4) - (params.crop_height / 2) ),
+					Math.floor( ($("#my_camera > video")[0].videoWidth) - (params.crop_width / 2) ),
+					Math.floor( ($("#my_camera > video")[0].videoHeight) - (params.crop_height / 2) ),
 					params.crop_width,
 					params.crop_height,
 					0,
@@ -592,7 +592,7 @@ var Webcam = {
 		// grab image frame from userMedia or flash movie
 		if (this.userMedia) {
 			// native implementation
-			context.drawImage(this.video, 0, 0, $("#my_camera > video")[0].videoWidth/4, $("#my_camera > video")[0].videoHeight/4);
+			context.drawImage(this.video, 0, 0, $("#my_camera > video")[0].videoWidth, $("#my_camera > video")[0].videoHeight);
 			
 			// fire callback right away
 			func();
